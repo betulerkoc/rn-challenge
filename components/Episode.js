@@ -13,7 +13,7 @@ import {
 
 import Button from './Button';
 
-const Episode = () => {
+const Episode = ({ navigation }) => {
   const [episode, setEpisodes] = useState(null);
 
   const fetchData = async () => {
@@ -34,7 +34,7 @@ const Episode = () => {
           <FlatList
             data={episode.data}
             keyExtractor={(x, i) => i}
-            renderItem={({item}) => <Button title={item.name} id={item.id} />}
+            renderItem={({item}) => <Button title={item.name} id={item.id} navigation={navigation}/>}
           />
         </View>
       )}

@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
-const Button = ({title, id}) => {
-  const onPress = () => console.log("hello");
+const Button = ({title, id, navigation}) => {
 
-  return (
+    return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.button} onPress={onPress}>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Detail', {
+          id: id
+      })}>
         <Text>{title}</Text>
       </TouchableOpacity>
     </View>
