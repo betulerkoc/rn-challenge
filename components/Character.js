@@ -7,7 +7,7 @@ const Character = ({url, navigation}) => {
   const fetchData = async () => {
     const response = await fetch(url);
     const json = await response.json();
-    setCharacter({data: json});
+    setCharacter(json);
   };
 
   useEffect(() => {
@@ -20,13 +20,13 @@ const Character = ({url, navigation}) => {
         <TouchableOpacity
           onPress={() =>
             navigation.navigate('Character Detail', {
-              id: character.data.id,
+              id: character.id,
             })
           }>
           <Image
             style={styles.tinyLogo}
             source={{
-              uri: character.data.image,
+              uri: character.image,
             }}
           />
         </TouchableOpacity>
@@ -43,7 +43,9 @@ const styles = StyleSheet.create({
   tinyLogo: {
     width: 150,
     height: 150,
-    margin: 10,
+  margin:5,
+    marginVertical: 30,
+    borderRadius: 75
   },
 });
 

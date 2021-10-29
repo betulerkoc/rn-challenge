@@ -11,7 +11,7 @@ const CharacterDetail = ({route}) => {
       `https://rickandmortyapi.com/api/character/${id}`,
     );
     const json = await response.json();
-    setCharacterDetails({data: json});
+    setCharacterDetails(json);
   };
 
   useEffect(() => {
@@ -25,18 +25,18 @@ const CharacterDetail = ({route}) => {
           <Image
             style={styles.characterImage}
             source={{
-              uri: characterDetails.data.image,
+              uri: characterDetails.image,
             }}
           />
           <View style={styles.header}>
-            <Text style={styles.headerTitle}>{characterDetails.data.name}</Text>
+            <Text style={styles.headerTitle}>{characterDetails.name}</Text>
           </View>
-          <View style={styles.detailText}>
-            <Text>Gender: {characterDetails.data.gender}</Text>
-            <Text>Species: {characterDetails.data.species}</Text>
-            <Text>Origin: {characterDetails.data.origin.name}</Text>
-            <Text>Location: {characterDetails.data.location.name}</Text>
-            <Text>Status: {characterDetails.data.status}</Text>
+          <View>
+            <Text>Gender: {characterDetails.gender}</Text>
+            <Text>Species: {characterDetails.species}</Text>
+            <Text>Origin: {characterDetails.origin.name}</Text>
+            <Text>Location: {characterDetails.location.name}</Text>
+            <Text>Status: {characterDetails.status}</Text>
           </View>
         </View>
       )}

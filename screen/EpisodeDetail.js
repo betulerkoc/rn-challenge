@@ -18,7 +18,7 @@ const EpisodeDetail = ({route, navigation}) => {
       `https://rickandmortyapi.com/api/episode/${id}`,
     );
     const json = await response.json();
-    setEpisodeDetails({data: json});
+    setEpisodeDetails(json);
   };
 
   useEffect(() => {
@@ -31,15 +31,15 @@ const EpisodeDetail = ({route, navigation}) => {
         <>
           <View style={styles.header}>
             <Text style={styles.headerTitle}>
-              {episodeDetails.data.name} Details
+              {episodeDetails.name} Details
             </Text>
           </View>
           <View style={styles.detailText}>
-            <Text>Date: {episodeDetails.data.air_date}</Text>
-            <Text>Episode: {episodeDetails.data.episode}</Text>
+            <Text>Date: {episodeDetails.air_date}</Text>
+            <Text>Episode: {episodeDetails.episode}</Text>
             <Text>Characters: </Text>
               <FlatList
-                data={episodeDetails.data.characters}
+                data={episodeDetails.characters}
                 keyExtractor={(x, i) => i}
                 horizontal
                 renderItem={({item}) => (

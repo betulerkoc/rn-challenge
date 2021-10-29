@@ -9,7 +9,7 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import Episode from './screen/Episode'
+import Episodes from './screen/Episodes'
 import CharacterDetail from './screen/CharacterDetail';
 import EpisodeDetail from './screen/EpisodeDetail';
 
@@ -19,7 +19,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Rick and Morty" component={Episode} />
+        <Stack.Screen name="Rick and Morty" component={Episodes} />
         <Stack.Screen name="Episode Detail" component={EpisodeDetail} />
         <Stack.Screen name="Character Detail" component={CharacterDetail} />
       </Stack.Navigator>

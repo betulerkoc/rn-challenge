@@ -8,17 +8,17 @@ import {
   Dimensions,
 } from 'react-native';
 
-import Button from '../components/Button';
+import Episode from '../components/Episode';
 
 const WINDOW = Dimensions.get('window');
 
-const Episode = ({navigation}) => {
-  const [episode, setEpisodes] = useState(null);
+const Episodes = ({navigation}) => {
+  const [episodes, setEpisodes] = useState(null);
 
   const fetchData = async () => {
     const response = await fetch('https://rickandmortyapi.com/api/episode');
     const json = await response.json();
-    setEpisodes({data: json.results});
+    setEpisodes(json.results);
   };
 
   useEffect(() => {
@@ -31,13 +31,13 @@ const Episode = ({navigation}) => {
         style={styles.logo}
         source={require('../image/rick-and-morty.png')}
       />
-      {episode && (
+      {episodes && (
         <View style={styles.container}>
           <FlatList
-            data={episode.data}
+            data={episodes}
             keyExtractor={(x, i) => i}
             renderItem={({item}) => (
-              <Button title={item.name} id={item.id} navigation={navigation} />
+              <Episode title={item.name} id={item.id} navigation={navigation} />
             )}
           />
         </View>
@@ -60,4 +60,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Episode;
+export default Episodes;

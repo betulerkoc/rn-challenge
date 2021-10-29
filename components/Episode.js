@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
-const Button = ({title, id, navigation}) => {
+const Episode = ({title, id, navigation}) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity
@@ -34,4 +34,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Button;
+export default Episode;
