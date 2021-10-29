@@ -2,20 +2,25 @@ import React from 'react';
 import {useState} from 'react';
 import {useEffect} from 'react';
 
-import {SafeAreaView, StyleSheet, Text} from 'react-native';
+import {
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  Image,
+} from 'react-native';
+import Character from './Character';
 
-const Detail = ({route}) => {
+const Detail = ({route, navigation}) => {
   const {id} = route.params;
-  console.log(id);
-
   const [episodeDetails, setEpisodeDetails] = useState(null);
 
   const fetchData = async () => {
     const response = await fetch(
-      "https://rickandmortyapi.com/api/episode/8",
+      `https://rickandmortyapi.com/api/episode/${id}`,
     );
     const json = await response.json();
-    console.log(json)
     setEpisodeDetails({data: json});
   };
 
@@ -25,8 +30,24 @@ const Detail = ({route}) => {
 
   return (
     <SafeAreaView>
-      <Text>Hello</Text>
-      {console.log(episodeDetails)}
+      {episodeDetails && (
+        <>
+          <Text>{episodeDetails.data.name}</Text>
+          <Text>{episodeDetails.data.air_date}</Text>
+          <Text>{episodeDetails.data.episode}</Text>
+
+          <View style={styles.sectionContainer}>
+            <FlatList
+              data={episodeDetails.data.characters}
+              keyExtractor={(x, i) => i}
+              horizontal
+              renderItem={({item}) => (
+                <Character url={item} navigation={navigation}/>
+              )}
+            />
+          </View>
+        </>
+      )}
     </SafeAreaView>
   );
 };
@@ -35,6 +56,10 @@ const styles = StyleSheet.create({
   sectionContainer: {
     marginTop: 32,
     paddingHorizontal: 24,
+  },
+  tinyLogo: {
+    width: 50,
+    height: 50,
   },
 });
 

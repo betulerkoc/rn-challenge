@@ -4,8 +4,6 @@ import {useEffect} from 'react';
 
 import {
   SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
   View,
   FlatList,
@@ -28,7 +26,6 @@ const Episode = ({ navigation }) => {
 
   return (
     <SafeAreaView>
-      {episode && console.log(episode.data)}
       {episode && (
         <View style={styles.sectionContainer}>
           <FlatList
