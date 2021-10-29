@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
 const Button = ({title, id, navigation}) => {
 
     return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Detail', {
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('EpisodeDetail', {
           id: id
       })}>
         <Text>{title}</Text>

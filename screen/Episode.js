@@ -1,7 +1,4 @@
-import React from 'react';
-import {useState} from 'react';
-import {useEffect} from 'react';
-
+import React, {useState, useEffect}  from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -9,7 +6,7 @@ import {
   FlatList,
 } from 'react-native';
 
-import Button from './Button';
+import Button from '../components/Button';
 
 const Episode = ({ navigation }) => {
   const [episode, setEpisodes] = useState(null);

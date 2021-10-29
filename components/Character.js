@@ -1,9 +1,5 @@
-import React from 'react';
-import {useState} from 'react';
-import {useEffect} from 'react';
-
-import {SafeAreaView, StyleSheet, Image} from 'react-native';
-import ImageCard from './ImageCard';
+import React, {useState, useEffect}  from 'react';
+import {SafeAreaView, StyleSheet, Image, TouchableOpacity} from 'react-native';
 
 const Character = ({url, navigation}) => {
   const [character, setCharacter] = useState(null);
@@ -20,9 +16,20 @@ const Character = ({url, navigation}) => {
 
   return (
     <SafeAreaView>
-      {character && console.log(character.data.image)}
       {character && (
-        <ImageCard navigation={navigation} imgUrl={character.data.image} id={character.data.id}/>
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate('CharacterDetail', {
+              id: character.data.id,
+            })
+          }>
+          <Image
+            style={styles.tinyLogo}
+            source={{
+              uri: character.data.image,
+            }}
+          />
+        </TouchableOpacity>
       )}
     </SafeAreaView>
   );
@@ -36,7 +43,7 @@ const styles = StyleSheet.create({
   tinyLogo: {
     width: 150,
     height: 150,
-    margin: 10
+    margin: 10,
   },
 });
 

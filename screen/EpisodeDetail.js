@@ -1,7 +1,4 @@
-import React from 'react';
-import {useState} from 'react';
-import {useEffect} from 'react';
-
+import React, {useState, useEffect}  from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -10,9 +7,9 @@ import {
   FlatList,
   Image,
 } from 'react-native';
-import Character from './Character';
+import Character from '../components/Character';
 
-const Detail = ({route, navigation}) => {
+const EpisodeDetail = ({route, navigation}) => {
   const {id} = route.params;
   const [episodeDetails, setEpisodeDetails] = useState(null);
 
@@ -35,7 +32,6 @@ const Detail = ({route, navigation}) => {
           <Text>{episodeDetails.data.name}</Text>
           <Text>{episodeDetails.data.air_date}</Text>
           <Text>{episodeDetails.data.episode}</Text>
-
           <View style={styles.sectionContainer}>
             <FlatList
               data={episodeDetails.data.characters}
@@ -63,4 +59,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Detail;
+export default EpisodeDetail;
