@@ -19,7 +19,7 @@ const Character = ({url, navigation}) => {
       {character && (
         <TouchableOpacity
           onPress={() =>
-            navigation.navigate('CharacterDetail', {
+            navigation.navigate('Character Detail', {
               id: character.data.id,
             })
           }>

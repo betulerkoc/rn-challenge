@@ -20,8 +20,8 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Rick and Morty" component={Episode} />
-        <Stack.Screen name="EpisodeDetail" component={EpisodeDetail} />
-        <Stack.Screen name="CharacterDetail" component={CharacterDetail} />
+        <Stack.Screen name="Episode Detail" component={EpisodeDetail} />
+        <Stack.Screen name="Character Detail" component={CharacterDetail} />
       </Stack.Navigator>
     </NavigationContainer>
   );

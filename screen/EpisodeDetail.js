@@ -1,4 +1,4 @@
-import React, {useState, useEffect}  from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -29,18 +29,23 @@ const EpisodeDetail = ({route, navigation}) => {
     <SafeAreaView>
       {episodeDetails && (
         <>
-          <Text>{episodeDetails.data.name}</Text>
-          <Text>{episodeDetails.data.air_date}</Text>
-          <Text>{episodeDetails.data.episode}</Text>
-          <View style={styles.sectionContainer}>
-            <FlatList
-              data={episodeDetails.data.characters}
-              keyExtractor={(x, i) => i}
-              horizontal
-              renderItem={({item}) => (
-                <Character url={item} navigation={navigation}/>
-              )}
-            />
+          <View style={styles.header}>
+            <Text style={styles.headerTitle}>
+              {episodeDetails.data.name} Details
+            </Text>
+          </View>
+          <View style={styles.detailText}>
+            <Text>Date: {episodeDetails.data.air_date}</Text>
+            <Text>Episode: {episodeDetails.data.episode}</Text>
+            <Text>Characters: </Text>
+              <FlatList
+                data={episodeDetails.data.characters}
+                keyExtractor={(x, i) => i}
+                horizontal
+                renderItem={({item}) => (
+                  <Character url={item} navigation={navigation} />
+                )}
+              />
           </View>
         </>
       )}
@@ -49,13 +54,27 @@ const EpisodeDetail = ({route, navigation}) => {
 };
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
   tinyLogo: {
     width: 50,
     height: 50,
+  },
+  header: {
+    height: 100,
+    flexDirection: 'row',
+  },
+  headerTitle: {
+    flex: 1,
+    fontSize: 25,
+    color: '#0099cc',
+    fontWeight: 'bold',
+    alignSelf: 'center',
+    textAlign: 'center',
+  },
+  detailText: {
+    marginTop: 32,
+    paddingHorizontal: 15,
+    paddingVertical: 20,
+    marginHorizontal: 15,
   },
 });
 

@@ -1,10 +1,5 @@
-import React, {useState, useEffect}  from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  Image,
-} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {SafeAreaView, StyleSheet, Text, Image, View} from 'react-native';
 
 const CharacterDetail = ({route}) => {
   const {id} = route.params;
@@ -25,33 +20,49 @@ const CharacterDetail = ({route}) => {
 
   return (
     <SafeAreaView>
-      {console.log(characterDetails)}
       {characterDetails && (
-        <>
+        <View style={styles.container}>
           <Image
-            style={styles.tinyLogo}
+            style={styles.characterImage}
             source={{
               uri: characterDetails.data.image,
             }}
           />
-          <Text>Name: {characterDetails.data.name}</Text>
-          <Text>Gender: {characterDetails.data.gender}</Text>
-          <Text>Species: {characterDetails.data.species}</Text>
-          <Text>Location: {characterDetails.data.location.name}</Text>
-        </>
+          <View style={styles.header}>
+            <Text style={styles.headerTitle}>{characterDetails.data.name}</Text>
+          </View>
+          <View style={styles.detailText}>
+            <Text>Gender: {characterDetails.data.gender}</Text>
+            <Text>Species: {characterDetails.data.species}</Text>
+            <Text>Origin: {characterDetails.data.origin.name}</Text>
+            <Text>Location: {characterDetails.data.location.name}</Text>
+            <Text>Status: {characterDetails.data.status}</Text>
+          </View>
+        </View>
       )}
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  container: {
+    marginTop: 50,
+    alignItems: 'center',
   },
-  tinyLogo: {
-    width: 50,
-    height: 50,
+  characterImage: {
+    width: 200,
+    height: 200,
+  },
+  header: {
+    height: 100,
+  },
+  headerTitle: {
+    marginTop: 10,
+    fontSize: 25,
+    color: '#0099cc',
+    fontWeight: 'bold',
+    alignSelf: 'center',
+    textAlign: 'center',
   },
 });
 
